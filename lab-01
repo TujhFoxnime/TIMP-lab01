@@ -1,0 +1,195 @@
+#1
+
+
+
+1)
+                     * скачиваем зип-файл:egor@egor-120-1100er:~$ wget -O boost_1_69_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz/download
+URL transformed to HTTPS due to an HSTS policy
+--2023-03-08 14:03:12--  https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz/download
+Распознаётся sourceforge.net (sourceforge.net)… 104.18.11.128, 104.18.10.128, 2606:4700::6812:a80, ...
+Подключение к sourceforge.net (sourceforge.net)|104.18.11.128|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 302 Found
+Адрес: https://downloads.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.gz?ts=gAAAAABkCHmABnzhEcr26zmsCyIevyMg-x9z0fu1ouQrNthWj3gjKdUKheth3bCBSwBQZNPYB5QQM9YQ8yIDF1djAhe3H24RTg%3D%3D&use_mirror=deac-riga&r= [переход]
+--2023-03-08 14:03:13--  https://downloads.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.gz?ts=gAAAAABkCHmABnzhEcr26zmsCyIevyMg-x9z0fu1ouQrNthWj3gjKdUKheth3bCBSwBQZNPYB5QQM9YQ8yIDF1djAhe3H24RTg%3D%3D&use_mirror=deac-riga&r=
+Распознаётся downloads.sourceforge.net (downloads.sourceforge.net)… 204.68.111.105
+Подключение к downloads.sourceforge.net (downloads.sourceforge.net)|204.68.111.105|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 302 Found
+Адрес: https://deac-riga.dl.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.gz [переход]
+--2023-03-08 14:03:21--  https://deac-riga.dl.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.gz
+Распознаётся deac-riga.dl.sourceforge.net (deac-riga.dl.sourceforge.net)… 89.111.52.100
+Подключение к deac-riga.dl.sourceforge.net (deac-riga.dl.sourceforge.net)|89.111.52.100|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 200 OK
+Длина: 111710205 (107M) [application/x-gzip]
+Сохранение в: ‘boost_1_69_0.tar.gz’
+
+boost_1_69_0.tar.gz 100%[===================>] 106,53M  5,56MB/s    за 20s     
+
+2023-03-08 14:03:41 (5,30 MB/s) - ‘boost_1_69_0.tar.gz’ сохранён [111710205/111710205]2)
+                   * Распаковка зипки:
+$ tar xvzf boost_1_69_0.tar.gz *  Переход к папке, не являющейся директивой:    cd boo... (Tab) 
+   cd boost_1_69_0.tar.gz\ (Enter)* Install apt install tree (для нахождения кол-ва файлов и дир-вов, а также для просмотра дерева содержащихся файлов
+
+
+3)
+
+egor@egor-120-1100er:~/boost_1_69_0$ tree -a -L 1
+.
+├── boost
+├── boost-build.jam
+├── boostcpp.jam
+├── boost.css
+├── boost.png
+├── bootstrap.bat
+├── bootstrap.sh
+├── doc
+├── index.htm
+├── index.html
+├── INSTALL
+├── Jamroot
+├── libs
+├── LICENSE_1_0.txt
+├── more
+├── rst.css
+├── status
+└── tools
+
+6 directories, 12 files
+
+
+4) 
+egor@egor-120-1100er:~/boost_1_69_0$  tree -a
+                    5637 directories, 61191 files          (all files)
+
+
+5)
+1* egor@egor-120-1100er:~/boost_1_69_0$ find -name "*.cpp" -not -type d|wc -l
+                    13774 (.срр файлы)
+
+2* find -name "*.hpp" -o -name "*.h" -not -type d|wc -l
+                    15208 (заголовочные файлы)
+
+3* find -not -name "*.cpp" -not -name "*.hpp" -not -name "*.h" -not -type d|wc -l
+                    32209 (не заголовочные и не .срр)
+                    
+6)
+
+egor@egor-120-1100er:~/boost_1_69_0$ readlink -f any.hpp 
+                    /home/egor/boost_1_69_0/any.hpp  (полный путь к файлу)
+
+7)
+
+egor@egor-120-1100er:~/boost_1_69_0$ grep -r "boost::asio"
+ 
+Часть выведенных файлов с содержанием последовательности  boost::asio :    
+libs/asio/doc/reference.qbk:   handle.read_some(boost::asio::buffer(data, size));
+libs/asio/doc/reference.qbk:      boost::asio::io_context & io_context);
+libs/asio/doc/reference.qbk:      boost::asio::io_context & io_context,
+libs/asio/doc/reference.qbk:      boost::asio::io_context & io_context);
+libs/asio/doc/reference.qbk:      boost::asio::io_context & io_context,
+libs/asio/doc/reference.qbk:[[boost::system::system_error][Thrown on failure. An error code of `boost::asio::error::eof` indicates that the connection was closed by the peer.]]
+libs/asio/doc/reference.qbk:   handle.write_some(boost::asio::buffer(data, size));
+libs/asio/doc/reference.qbk:   boost::asio::write(s, boost::asio::buffer(data, size)); 
+libs/asio/doc/reference.qbk:   boost::asio::write(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all()); 
+libs/asio/doc/reference.qbk:   boost::asio::write(s, boost::asio::buffer(data, size), ec); 
+libs/asio/doc/reference.qbk:   boost::asio::write(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all(), ec); 
+libs/asio/doc/reference.qbk:   boost::asio::write(s, boost::asio::buffer(data, size),
+libs/asio/doc/reference.qbk:       boost::asio::transfer_at_least(32)); 
+libs/asio/doc/reference.qbk:   boost::asio::write(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all()); 
+libs/asio/doc/reference.qbk:   boost::asio::write(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all(), ec); 
+libs/asio/doc/reference.qbk:   boost::asio::write(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all()); 
+libs/asio/doc/reference.qbk:   boost::asio::write(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all(), ec); 
+libs/asio/doc/reference.qbk:   boost::asio::write_at(d, 42, boost::asio::buffer(data, size)); 
+libs/asio/doc/reference.qbk:   boost::asio::write_at(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all()); 
+libs/asio/doc/reference.qbk:   boost::asio::write_at(d, 42,
+libs/asio/doc/reference.qbk:       boost::asio::buffer(data, size), ec); 
+libs/asio/doc/reference.qbk:   boost::asio::write_at(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all(), ec); 
+libs/asio/doc/reference.qbk:   boost::asio::write_at(d, 42, boost::asio::buffer(data, size),
+libs/asio/doc/reference.qbk:       boost::asio::transfer_at_least(32)); 
+libs/asio/doc/reference.qbk:   boost::asio::write_at(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all()); 
+libs/asio/doc/reference.qbk:   boost::asio::write_at(
+libs/asio/doc/reference.qbk:       boost::asio::transfer_all(), ec); 
+libs/asio/doc/reference.qbk:[section:is_error_code_enum_lt__addrinfo_errors__gt_ boost::system::is_error_code_enum< boost::asio::error::addrinfo_errors >]
+libs/asio/doc/reference.qbk:  struct boost::system::is_error_code_enum< boost::asio::error::addrinfo_errors >
+libs/asio/doc/reference.qbk:[section:value boost::system::is_error_code_enum< boost::asio::error::addrinfo_errors >::value]
+libs/asio/doc/reference.qbk:[indexterm2 boost_asio.indexterm.is_error_code_enum_lt__addrinfo_errors__gt_.value..value..boost::system::is_error_code_enum< boost::asio::error::addrinfo_errors >] 
+libs/asio/doc/reference.qbk:[section:is_error_code_enum_lt__basic_errors__gt_ boost::system::is_error_code_enum< boost::asio::error::basic_errors >]
+libs/asio/doc/reference.qbk:  struct boost::system::is_error_code_enum< boost::asio::error::basic_errors >
+libs/asio/doc/reference.qbk:[section:value boost::system::is_error_code_enum< boost::asio::error::basic_errors >::value]
+libs/asio/doc/reference.qbk:[indexterm2 boost_asio.indexterm.is_error_code_enum_lt__basic_errors__gt_.value..value..boost::system::is_error_code_enum< boost::asio::error::basic_errors >] 
+libs/asio/doc/reference.qbk:[section:is_error_code_enum_lt__misc_errors__gt_ boost::system::is_error_code_enum< boost::asio::error::misc_errors >]
+libs/asio/doc/reference.qbk:  struct boost::system::is_error_code_enum< boost::asio::error::misc_errors >
+libs/asio/doc/reference.qbk:[section:value boost::system::is_error_code_enum< boost::asio::error::misc_errors >::value]
+libs/asio/doc/reference.qbk:[indexterm2 boost_asio.indexterm.is_error_code_enum_lt__misc_errors__gt_.value..value..boost::system::is_error_code_enum< boost::asio::error::misc_errors >] 
+libs/asio/doc/reference.qbk:[section:is_error_code_enum_lt__netdb_errors__gt_ boost::system::is_error_code_enum< boost::asio::error::netdb_errors >]
+libs/asio/doc/reference.qbk:  struct boost::system::is_error_code_enum< boost::asio::error::netdb_errors >
+libs/asio/doc/reference.qbk:[section:value boost::system::is_error_code_enum< boost::asio::error::netdb_errors >::value]
+libs/asio/doc/reference.qbk:[indexterm2 boost_asio.indexterm.is_error_code_enum_lt__netdb_errors__gt_.value..value..boost::system::is_error_code_enum< boost::asio::error::netdb_errors >] 
+libs/asio/doc/reference.qbk:[section:is_error_code_enum_lt__ssl_errors__gt_ boost::system::is_error_code_enum< boost::asio::error::ssl_errors >]
+libs/asio/doc/reference.qbk:  struct boost::system::is_error_code_enum< boost::asio::error::ssl_errors >
+libs/asio/doc/reference.qbk:[section:value boost::system::is_error_code_enum< boost::asio::error::ssl_errors >::value]
+libs/asio/doc/reference.qbk:[indexterm2 boost_asio.indexterm.is_error_code_enum_lt__ssl_errors__gt_.value..value..boost::system::is_error_code_enum< boost::asio::error::ssl_errors >] 
+libs/asio/doc/reference.qbk:[section:is_error_code_enum_lt__boost__asio__ssl__error__stream_errors__gt_ boost::system::is_error_code_enum< boost::asio::ssl::error::stream_errors >]
+libs/asio/doc/reference.qbk:  struct boost::system::is_error_code_enum< boost::asio::ssl::error::stream_errors >
+libs/asio/doc/reference.qbk:[section:value boost::system::is_error_code_enum< boost::asio::ssl::error::stream_errors >::value]
+libs/asio/doc/reference.qbk:[indexterm2 boost_asio.indexterm.is_error_code_enum_lt__boost__asio__ssl__error__stream_errors__gt_.value..value..boost::system::is_error_code_enum< boost::asio::ssl::error::stream_errors >] 
+
+8)
+
+egor@egor-120-1100er:~/boost_1_69_0$ ./bootstrap.sh
+         
+egor@egor-120-1100er:~/boost_1_69_0$ mkdir folder_xx
+       (создал папку, чтобы после перенести её)
+egor@egor-120-1100er:~/boost_1_69_0$ ./b2 install --prefix=folder_xx
+            (копирование в созданную папку ранее)
+ 9)
+ 
+ egor@egor-120-1100er:~/boost_1_69_0$  mv -i folder_xx ~/boost-libs/
+              (перенос компилированных статических библиотек в директорию  ~/boost-libs)
+ 10)  
+ Переход  в директорию, где были перенесены библиотеки ранее с помощью
+ 
+egor@egor-120-1100er:~/boost_1_69_0$ cd ~/boost-libs/
+
+egor@egor-120-1100er:~/boost-libs$ du -ah              (размеры файлов в текущей директории)
+
+...
+4,0K	./include/boost/units/base_units/imperial/stone.hpp
+4,0K	./include/boost/units/base_units/imperial/inch.hpp
+4,0K	./include/boost/units/base_units/imperial/ounce.hpp
+4,0K	./include/boost/units/base_units/imperial/yard.hpp
+4,0K	./include/boost/units/base_units/imperial/pint.hpp
+4,0K	./include/boost/units/base_units/imperial/league.hpp
+4,0K	./include/boost/units/base_units/imperial/gallon.hpp
+4,0K	./include/boost/units/base_units/imperial/hundredweight.hpp
+4,0K	./include/boost/units/base_units/imperial/grain.hpp
+4,0K	./include/boost/units/base_units/imperial/fluid_ounce.hpp
+4,0K	./include/boost/units/base_units/imperial/pound.hpp
+4,0K	./include/boost/units/base_units/imperial/ton.hpp
+4,0K	./include/boost/units/base_units/imperial/quarter.hpp
+88K	./include/boost/units/base_units/imperial
+4,0K	./include/boost/units/base_units/si/mole.hpp
+...
+
+11)
+
+egor@egor-120-1100er:~/boost-libs$ du -ahx . | sort -rh | head -10          (топ самых тяжелых по памяти)
+
+191M	.
+155M	./include/boost
+155M	./include
+36M	./lib
+19M	./include/boost/phoenix
+17M	./include/boost/fusion
+13M	./include/boost/fusion/container
+12M	./include/boost/geometry
+8,3M	./include/boost/spirit
+6,7M	./include/boost/spirit/home
